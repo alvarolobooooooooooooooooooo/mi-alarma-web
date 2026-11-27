@@ -135,17 +135,23 @@
     alVer(caja, () => dibujar(formas, { retraso: 250 }));
   }
 
-  /* ── Qué trae: las piezas se dibujan y un pulso corre por los cables ── */
+  /* ── Qué trae: alarma → conexión cifrada → celular se dibujan, y un pulso lleva el aviso ── */
   const kit = $('[data-dibuja-kit]');
   if (kit) {
-    const piezas = $$('.pieza > *, .cable', kit).filter((f) => f.matches(FORMAS));
+    const piezas = $$('.pieza *', kit).filter((f) => f.matches(FORMAS));
+    const cables = $$('.cable', kit);
     const textos = $$('text', kit);
     const pulsos = $$('.pulso', kit);
     piezas.forEach((f) => { f.setAttribute('pathLength', '1'); f.style.strokeDasharray = '1 2'; f.style.strokeDashoffset = '1'; });
     textos.forEach((t) => { t.style.opacity = '0'; });
+    cables.forEach((c) => { c.style.opacity = '0'; });
     pulsos.forEach((p) => { p.style.opacity = '0'; });
     alVer(kit, () => {
       dibujar(piezas, { duracion: 1400, escalon: 40 });
+      cables.forEach((c) => {
+        const a = c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: 700, fill: 'forwards' });
+        a.onfinish = () => { c.style.opacity = ''; a.cancel(); };
+      });
       textos.forEach((t, i) => {
         const a = t.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
           { duration: 700, delay: 900 + i * 60, easing: SALE, fill: 'forwards' });

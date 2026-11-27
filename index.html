@@ -236,65 +236,59 @@
     </div>
   </section>
 
-  <!-- ══ QUÉ TRAE ══ -->
+  <!-- ══ QUÉ TRAE (lo que recibe el cliente y cómo le llega el aviso; nunca cómo está hecha por dentro) ══ -->
   <section class="seccion kit" id="que-trae" aria-labelledby="t-kit">
     <div class="envoltura">
       <p class="antetitulo">Qué trae</p>
-      <h2 class="titulo-seccion" id="t-kit" data-escribe>Tres piezas que trabajan <span class="esp">juntas.</span></h2>
-      <p class="texto-seccion">El sensor ve, la placa decide y avisa, la sirena suena. Y tú lo controlas todo desde el celular.</p>
+      <h2 class="titulo-seccion" id="t-kit" data-escribe>Una alarma, una app <span class="esp">y nada más.</span></h2>
+      <p class="texto-seccion">Tu alarma ve si alguien entra y suena. El aviso viaja cifrado hasta tu celular, y desde ahí la apagas.</p>
       <div class="kit-plano revela">
-        <svg viewBox="0 0 1100 470" role="img" aria-label="El sensor de movimiento se conecta a la placa ESP32, que se conecta a la sirena y avisa al celular por WiFi" data-dibuja-kit>
-          <!-- cables y el pulso que corre por ellos -->
-          <path class="cable" d="M 298 262 C 360 262 380 262 440 262"/>
-          <path class="cable" d="M 660 262 C 720 262 750 262 806 262"/>
-          <path class="pulso" id="pulso1" d="M 298 262 C 360 262 380 262 440 262"/>
-          <path class="pulso" id="pulso2" d="M 660 262 C 720 262 750 262 806 262"/>
-          <!-- sensor de movimiento (PIR) -->
+        <svg viewBox="0 0 1100 470" role="img" aria-label="Tu alarma detecta movimiento y manda el aviso por una conexión cifrada hasta tu celular" data-dibuja-kit>
+          <!-- el aviso viaja sin cables: líneas punteadas y un pulso que corre por ellas -->
+          <path class="cable" d="M 302 262 C 360 262 400 262 458 262"/>
+          <path class="cable" d="M 646 262 C 710 262 770 262 832 262"/>
+          <path class="pulso" d="M 302 262 C 360 262 400 262 458 262"/>
+          <path class="pulso" d="M 646 262 C 710 262 770 262 832 262"/>
+          <!-- tu alarma: una sola caja cerrada, con su lente y su sirena -->
           <g class="pieza">
-            <rect x="112" y="210" width="186" height="150" rx="16"/>
-            <path d="M 135 214 A 70 70 0 0 1 275 214"/>
-            <path d="M 160 213 A 45 60 0 0 1 250 213 M 182 212 A 23 66 0 0 1 228 212 M 205 145 L 205 212"/>
-            <path class="pieza-fina" d="M 140 185 L 270 185 M 152 163 L 258 163"/>
-            <path d="M 175 360 L 175 388 M 205 360 L 205 388 M 235 360 L 235 388"/>
-            <circle cx="135" cy="337" r="6"/><circle cx="275" cy="337" r="6"/>
+            <rect x="112" y="148" width="186" height="236" rx="40"/>
+            <circle cx="205" cy="228" r="46"/>
+            <circle class="pieza-fina" cx="205" cy="228" r="28"/>
+            <path class="pieza-fina" d="M 184 214 a 28 28 0 0 1 18 -12"/>
+            <circle cx="205" cy="296" r="5"/>
+            <path class="pieza-fina" d="M 160 326 H 250 M 160 344 H 250 M 172 362 H 238"/>
+            <path d="M 205 116 h .01 M 186 104 a 27 27 0 0 1 38 0 M 172 90 a 47 47 0 0 1 66 0"/>
           </g>
-          <!-- la placa ESP32 -->
+          <!-- conexión cifrada: una nube con candado -->
           <g class="pieza">
-            <rect x="440" y="150" width="220" height="226" rx="18"/>
-            <rect x="482" y="172" width="136" height="104" rx="8"/>
-            <path d="M 496 190 h 18 v 14 h 18 v -14 h 18 v 14 h 18 v -14 h 18 v 14 h 12"/>
-            <path class="pieza-fina" d="M 496 222 H 604 M 496 238 H 580"/>
-            <rect x="524" y="352" width="52" height="30" rx="6"/>
-            <rect x="470" y="312" width="26" height="20" rx="4"/><rect x="604" y="312" width="26" height="20" rx="4"/>
-            <circle cx="550" cy="318" r="6"/>
-            <path class="pieza-fina" d="M 452 172 v 186 M 648 172 v 186"/>
-            <path d="M 446 182 h 10 M 446 204 h 10 M 446 226 h 10 M 446 248 h 10 M 446 270 h 10 M 446 292 h 10 M 446 314 h 10 M 446 336 h 10 M 644 182 h 10 M 644 204 h 10 M 644 226 h 10 M 644 248 h 10 M 644 270 h 10 M 644 292 h 10 M 644 314 h 10 M 644 336 h 10"/>
+            <path d="M 470 312 A 46 46 0 0 1 482 222 A 70 70 0 0 1 612 204 A 56 56 0 0 1 634 312 Z"/>
+            <rect x="524" y="256" width="56" height="42" rx="9"/>
+            <path d="M 536 256 v -12 a 16 16 0 0 1 32 0 v 12"/>
+            <path class="pieza-fina" d="M 552 272 v 10"/>
+            <circle cx="552" cy="270" r="4"/>
           </g>
-          <!-- WiFi hacia el celular -->
+          <!-- tu celular, con el aviso -->
           <g class="pieza">
-            <path d="M 550 120 h .01 M 520 96 a 42 42 0 0 1 60 0 M 498 74 a 72 72 0 0 1 104 0 M 476 52 a 104 104 0 0 1 148 0"/>
+            <rect x="840" y="134" width="124" height="252" rx="24"/>
+            <rect class="pieza-fina" x="882" y="148" width="40" height="9" rx="4.5"/>
+            <rect x="854" y="176" width="96" height="44" rx="11"/>
+            <path class="pieza-fina" d="M 866 192 H 920 M 866 205 H 938"/>
+            <g transform="translate(872 246) scale(2.5)"><path vector-effect="non-scaling-stroke" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path vector-effect="non-scaling-stroke" d="m9 12 2 2 4-4"/></g>
+            <path class="pieza-fina" d="M 882 370 H 922"/>
           </g>
-          <!-- la sirena -->
-          <g class="pieza">
-            <ellipse cx="900" cy="200" rx="86" ry="26"/>
-            <path d="M 814 200 V 318 A 86 26 0 0 0 986 318 V 200"/>
-            <circle cx="900" cy="200" r="10"/><circle cx="868" cy="200" r="4"/><circle cx="932" cy="200" r="4"/><circle cx="900" cy="186" r="3"/><circle cx="900" cy="214" r="3"/>
-            <path d="M 1010 236 a 36 36 0 0 1 0 52 M 1030 216 a 64 64 0 0 1 0 92 M 1050 198 a 92 92 0 0 1 0 128"/>
-            <path class="pieza-fina" d="M 806 262 h 8"/>
-          </g>
-          <text x="205" y="428" text-anchor="middle" class="t-nombre">Sensor de movimiento</text>
-          <text x="205" y="454" text-anchor="middle" class="t-hace">ve si alguien pasa</text>
-          <text x="550" y="428" text-anchor="middle" class="t-nombre">Placa ESP32 con WiFi</text>
-          <text x="550" y="454" text-anchor="middle" class="t-hace">decide y te avisa</text>
-          <text x="900" y="428" text-anchor="middle" class="t-nombre">Sirena</text>
-          <text x="900" y="454" text-anchor="middle" class="t-hace">suena para espantar</text>
+          <text x="205" y="428" text-anchor="middle" class="t-nombre">Tu alarma</text>
+          <text x="205" y="454" text-anchor="middle" class="t-hace">ve, suena y te avisa</text>
+          <text x="552" y="428" text-anchor="middle" class="t-nombre">Conexión cifrada</text>
+          <text x="552" y="454" text-anchor="middle" class="t-hace">solo tú ves tus avisos</text>
+          <text x="902" y="428" text-anchor="middle" class="t-nombre">Tu celular</text>
+          <text x="902" y="454" text-anchor="middle" class="t-hace">la controlas desde donde estés</text>
         </svg>
       </div>
       <ul class="kit-lista">
-        <li class="revela"><svg class="ic"><use href="#i-check"/></svg><span><strong>Sensor de movimiento</strong><span>Detecta personas que pasan frente a él.</span></span></li>
-        <li class="revela" style="--retraso:.06s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Placa con WiFi</strong><span>El cerebro: vigila, hace sonar y avisa.</span></span></li>
-        <li class="revela" style="--retraso:.12s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Sirena</strong><span>Suena 10 segundos cuando detecta a alguien.</span></span></li>
-        <li class="revela" style="--retraso:.18s"><svg class="ic"><use href="#i-celular"/></svg><span><strong>La app Mi Alarma</strong><span>Para iPhone y Android, sin pagar por descargarla.</span></span></li>
+        <li class="revela"><svg class="ic"><use href="#i-check"/></svg><span><strong>La alarma, lista para usar</strong><span>Sensor de movimiento y sirena en una sola caja. La enchufas y la conectas a tu WiFi.</span></span></li>
+        <li class="revela" style="--retraso:.06s"><svg class="ic"><use href="#i-celular"/></svg><span><strong>La app Mi Alarma</strong><span>Para iPhone y Android, sin pagar por descargarla.</span></span></li>
+        <li class="revela" style="--retraso:.12s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Avisos al instante</strong><span>En tu celular aunque la app esté cerrada, y por Telegram si quieres.</span></span></li>
+        <li class="revela" style="--retraso:.18s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Mejoras por WiFi</strong><span>Se actualiza desde la app, sin llevarla a ningún lado.</span></span></li>
       </ul>
     </div>
   </section>

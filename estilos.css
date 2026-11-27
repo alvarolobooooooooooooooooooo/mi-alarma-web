@@ -214,7 +214,7 @@ section[id], #demo { scroll-margin-top: 96px; }
 .kit-plano svg { width: 100%; height: auto; }
 .kit-plano .pieza { fill: none; stroke: var(--tinta); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .kit-plano .pieza-fina { stroke-width: 1.4; }
-.kit-plano .cable { fill: none; stroke: #9a9a9a; stroke-width: 3; stroke-linecap: round; }
+.kit-plano .cable { fill: none; stroke: #9a9a9a; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1 11; }
 .kit-plano .pulso { fill: none; stroke: var(--verde); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 26 600; filter: drop-shadow(0 0 4px rgba(46, 217, 1, .9)); }
 .kit-plano text { font-family: var(--letra); fill: var(--tinta); }
 .kit-plano .t-nombre { font-size: 22px; font-weight: 600; }
