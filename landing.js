@@ -194,7 +194,7 @@
   }
 
   /* ── El héroe: la app cuenta su propia historia ──
-     vigila → alguien entra (rojo, aviso) → la apagas → la vuelves a armar → vigila */
+     vigila → alguien entra (rojo, aviso) → la apagas → la vuelves a armar y vigila */
   const escena = $('#escena');
   if (escena) {
     const pantallas = $$('.pantalla img', escena);
@@ -266,12 +266,9 @@
         // La vuelves a armar
         await tocar(BOTON.armar);
         escena.classList.remove('desarmada');
-        mostrar('armando');
-        decir('Armándose: 10 s para salir');
-        await soltar();
-        await turno(2600);
         mostrar('vigilando');
         decir('Vigilando la casa');
+        await soltar();
       }
     })();
   }
