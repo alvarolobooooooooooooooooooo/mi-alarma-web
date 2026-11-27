@@ -80,9 +80,6 @@ a { color: inherit; }
 .bajada { font-size: var(--t-20); line-height: 1.45; color: var(--sobre-negro-2); max-width: 34ch; margin: 0 0 var(--e-8); }
 .acciones { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-4) var(--e-6); }
 .heroe .enlace { color: var(--sobre-negro); }
-.confianza { display: flex; flex-wrap: wrap; gap: var(--e-3) var(--e-6); margin: var(--e-8) 0 0; padding: 0; list-style: none; color: var(--sobre-negro-2); font-size: var(--t-14); }
-.confianza li { display: flex; align-items: center; gap: var(--e-2); }
-.confianza .ic { width: 18px; height: 18px; color: var(--verde); }
 
 /* el teléfono con la app de verdad */
 .escena { position: relative; display: grid; place-items: center; min-height: 600px; perspective: 1400px; }
@@ -171,9 +168,9 @@ section[id], #demo { scroll-margin-top: 96px; }
 @media (min-width: 980px) { .momento { min-height: 78vh; } }
 .momento .telefono { width: min(280px, 72vw); margin: 0 auto; }
 .momento .telefono .pantalla img { opacity: 1; transform: none; }
-.momento-chip { display: inline-flex; align-self: start; justify-self: start; align-items: center; gap: 8px; min-height: 32px; padding: 0 14px; border-radius: var(--pildora); background: var(--negro); color: var(--sobre-negro); font-size: var(--t-14); font-weight: 500; }
-.momento-chip .punto.rojo { background: var(--rojo-brillo); box-shadow: 0 0 0 4px rgba(242, 100, 91, .25); }
-.momento-chip .punto.gris { background: #9a9a9a; box-shadow: none; animation: none; }
+/* rótulo de cada momento: número oscuro + nombre, sin pill (mismo estilo que los antetítulos) */
+.momento-paso { margin: 0; display: flex; align-items: baseline; gap: 12px; font-size: var(--t-14); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); }
+.momento-paso b { color: var(--tinta); font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
 .momento h3 { font-size: clamp(var(--t-32), 4vw, var(--t-40)); font-weight: 500; letter-spacing: -.03em; line-height: 1.08; margin: 0; }
 .momento p { font-size: var(--t-20); color: var(--tinta-2); margin: 0; max-width: 36ch; }
 
