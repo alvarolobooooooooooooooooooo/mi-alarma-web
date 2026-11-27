@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fuentes/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fuentes/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="estilos.css?v=8">
+<link rel="stylesheet" href="estilos.css?v=10">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -74,11 +74,11 @@
             <img class="activa" data-p="vigilando" src="capturas/vigilando-claro.webp?v=7" alt="La app en estado Vigilando, con el radar verde" width="393" height="793">
             <img data-p="alarma" src="capturas/alarma-claro.webp?v=7" alt="La app en rojo: ¡Movimiento detectado! La sirena está sonando" width="393" height="793" loading="lazy">
             <img data-p="desarmada" src="capturas/desarmada-claro.webp?v=7" alt="La app con la alarma desarmada" width="393" height="793" loading="lazy">
+            <div class="aviso" id="aviso-heroe" role="presentation">
+              <span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span>
+              <span class="aviso-cuerpo"><span class="aviso-arriba"><strong>⚠️ ¡Alerta de tu alarma!</strong><small>ahora</small></span><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span>
+            </div>
           </div>
-        </div>
-        <div class="aviso" id="aviso-heroe" role="presentation">
-          <span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span>
-          <span><small><span>Mi Alarma</span><span>ahora</span></small><strong>⚠️ ¡Alerta de tu alarma!</strong><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span>
         </div>
         <div class="dedo" id="dedo" aria-hidden="true"></div>
       </div>
@@ -195,9 +195,9 @@
           <h3>El aviso te llega aunque la app esté cerrada</h3>
           <p>La propia alarma manda la notificación a tu celular. Y si quieres, también por Telegram.</p>
           <div class="pila-avisos" aria-hidden="true">
-            <div class="aviso"><span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span><span><small><span>Mi Alarma</span><span>ahora</span></small><strong>⚠️ ¡Alerta de tu alarma!</strong><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span></div>
-            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span><small><span>Telegram</span><span>21:54</span></small><strong>Mi Alarma</strong><p>⚠️ ¡Movimiento detectado! (21:54) La alarma está sonando. Abre la app para apagarla.</p></span></div>
-            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span><small><span>Telegram</span><span>ayer</span></small><strong>Mi Alarma</strong><p>🔌 La alarma se encendió (¿se fue la luz?) y se está volviendo a armar.</p></span></div>
+            <div class="aviso"><span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span><span class="aviso-cuerpo"><span class="aviso-arriba"><strong>⚠️ ¡Alerta de tu alarma!</strong><small>ahora</small></span><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span></div>
+            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span class="aviso-cuerpo"><span class="aviso-arriba"><strong>Mi Alarma</strong><small>ahora</small></span><p>⚠️ ¡Movimiento detectado! (21:54) La alarma está sonando. Abre la app para apagarla.</p></span></div>
+            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span class="aviso-cuerpo"><span class="aviso-arriba"><strong>Mi Alarma</strong><small>ayer</small></span><p>🔌 La alarma se encendió (¿se fue la luz?) y se está volviendo a armar.</p></span></div>
           </div>
         </article>
         <article class="tarjeta revela" style="--retraso:.06s">
@@ -336,6 +336,6 @@
 </main>
 
 <script src="vendor/qrcode.min.js" defer></script>
-<script src="landing.js?v=8" defer></script>
+<script src="landing.js?v=10" defer></script>
 </body>
 </html>

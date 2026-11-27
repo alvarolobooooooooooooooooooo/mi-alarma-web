@@ -17,6 +17,8 @@
   --rojo: #d92a21; --rojo-brillo: #f2645b;
   --letra: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --especial: "Instrument Serif", Georgia, serif;
+  /* la letra del iPhone (San Francisco), solo para lo que imita a iOS: avisos y barra de estado */
+  --ios: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --t-12: .75rem; --t-14: .875rem; --t-16: 1rem; --t-20: 1.25rem; --t-24: 1.5rem; --t-32: 2rem; --t-40: 2.5rem; --t-56: 3.5rem; --t-72: 4.5rem;
   --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-6: 24px; --e-8: 32px; --e-12: 48px; --e-16: 64px; --e-24: 96px;
   --c-16: 16px; --c-24: 24px; --c-32: 32px; --c-48: 48px; --pildora: 999px;
@@ -96,24 +98,42 @@ a { color: inherit; }
 .telefono { position: relative; width: min(320px, 78vw); aspect-ratio: 415 / 874; border-radius: 50px; padding: 11px; background: #e9e9e9;
   box-shadow: 0 0 0 1.5px #3a3a3a, 0 40px 90px rgba(0, 0, 0, .6), inset 0 0 0 2px #000; transform-style: preserve-3d; transition: transform .8s var(--sale); }
 .telefono::after { content: ""; position: absolute; top: 22px; left: 50%; width: 88px; height: 26px; margin-left: -44px; border-radius: var(--pildora); background: #000; z-index: 3; }
-.pantalla { position: relative; height: 100%; border-radius: 40px; overflow: hidden; background: #dedede; }
-.pantalla::before { content: "9:54"; position: absolute; z-index: 2; top: 14px; left: 11%; font: 600 14px/20px var(--letra); color: #0a0a0a; letter-spacing: .01em; }
+.pantalla { position: relative; height: 100%; border-radius: 40px; overflow: hidden; background: #dedede; container-type: inline-size; --pt: calc(100cqw / 393); }
+.pantalla::before { content: "9:54"; position: absolute; z-index: 2; top: 14px; left: 11%; font: 600 15px/20px var(--ios); color: #0a0a0a; letter-spacing: -.02em; }
+@supports (width: 1cqw) {
+  .pantalla::before { top: calc(18 * var(--pt)); left: calc(46 * var(--pt)); font-size: calc(17 * var(--pt)); line-height: calc(22 * var(--pt)); }
+  /* el aviso dentro de la pantalla: banner de iOS en tema claro, 8 pt de margen, bajo la isla */
+  .pantalla .aviso { top: calc(54 * var(--pt)); left: calc(8 * var(--pt)); right: calc(8 * var(--pt)); width: auto; translate: none;
+    grid-template-columns: calc(38 * var(--pt)) 1fr; gap: calc(10 * var(--pt)); padding: calc(12 * var(--pt)) calc(14 * var(--pt)) calc(12 * var(--pt)) calc(12 * var(--pt));
+    border-radius: calc(24 * var(--pt)); border: 0; color: #000; background: rgba(246, 246, 246, .82);
+    box-shadow: 0 calc(8 * var(--pt)) calc(30 * var(--pt)) rgba(0, 0, 0, .16);
+    transform: translateY(calc(-100% - 60 * var(--pt))); }
+  .pantalla .aviso.visible { transform: none; }
+  .pantalla .aviso-icono { width: calc(38 * var(--pt)); height: calc(38 * var(--pt)); border-radius: calc(9 * var(--pt)); }
+  .pantalla .aviso-icono .ic { width: calc(21 * var(--pt)); height: calc(21 * var(--pt)); }
+  .pantalla .aviso strong, .pantalla .aviso p { font-size: calc(15 * var(--pt)); line-height: calc(20 * var(--pt)); color: #000; }
+  .pantalla .aviso-arriba { gap: calc(8 * var(--pt)); }
+  .pantalla .aviso-arriba small { font-size: calc(13 * var(--pt)); color: rgba(60, 60, 67, .6); }
+}
 .pantalla img { position: absolute; inset: auto 0 0 0; width: 100%; height: auto; aspect-ratio: 393 / 793; opacity: 0; transition: opacity .45s ease, transform .6s var(--sale); transform: scale(1.02); }
 .pantalla img.activa { opacity: 1; transform: scale(1); }
 .escena.tiembla .telefono { animation: tiembla .12s linear 10; }
 @keyframes tiembla { 25% { translate: -2px 0; } 75% { translate: 2px 0; } }
 
 /* el aviso que baja (el mismo texto que manda la alarma) */
-.aviso { position: absolute; z-index: 5; top: 7%; left: 50%; width: min(340px, 86vw); translate: -50% 0; display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start;
-  padding: 14px 16px; border-radius: 22px; color: #fff; background: rgba(40, 40, 40, .78); border: 1px solid rgba(255, 255, 255, .14);
+.aviso { position: absolute; z-index: 5; top: 7%; left: 50%; width: min(340px, 86vw); translate: -50% 0; display: grid; grid-template-columns: 38px 1fr; gap: 10px; align-items: center;
+  padding: 12px 14px 12px 12px; border-radius: 24px; color: #fff; background: rgba(30, 30, 30, .74); border: 1px solid rgba(255, 255, 255, .1);
+  font-family: var(--ios); letter-spacing: -.01em; -webkit-font-smoothing: antialiased;
   backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6); box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
   opacity: 0; transform: translateY(-40px) scale(.92); transition: opacity .35s, transform .7s var(--rebote); }
 .aviso.visible { opacity: 1; transform: none; }
-.aviso-icono { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: #000; color: var(--verde); }
-.aviso-icono .ic { width: 22px; height: 22px; }
-.aviso small { display: flex; justify-content: space-between; font-size: var(--t-12); color: #c9c9c9; text-transform: uppercase; letter-spacing: .04em; }
-.aviso strong { display: block; font-size: var(--t-16); font-weight: 600; margin: 2px 0; }
-.aviso p { margin: 0; font-size: var(--t-14); line-height: 1.35; color: #e4e4e4; }
+.aviso-icono { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; background: #000; color: var(--verde); }
+.aviso-icono .ic { width: 21px; height: 21px; }
+.aviso-cuerpo { display: block; min-width: 0; }
+.aviso-arriba { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.aviso-arriba small { flex: none; font-size: 13px; color: rgba(235, 235, 245, .6); }
+.aviso strong { display: block; min-width: 0; font-size: 15px; line-height: 20px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.aviso p { margin: 0; font-size: 15px; line-height: 20px; color: #fff; }
 /* el dedo que toca (lo de las lecciones de interfaz: el cursor que entra, presiona y suelta) */
 .dedo { position: absolute; z-index: 6; left: 0; top: 0; width: 46px; height: 46px; margin: -23px; border-radius: 50%; background: rgba(20, 20, 20, .3);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, .95), 0 6px 18px rgba(0, 0, 0, .35); opacity: 0; transition: opacity .3s, left .9s var(--sale), top .9s var(--sale), transform .18s; pointer-events: none; }
@@ -191,7 +211,6 @@ section[id], #demo { scroll-margin-top: 96px; }
 /* los de atrás se oscurecen con un filtro (no con transparencia, para que su texto no se mezcle con el de adelante) */
 .pila-avisos .aviso:nth-child(2) { bottom: 22px; z-index: 2; transform: scale(.94); filter: brightness(.6); }
 .pila-avisos .aviso:nth-child(3) { bottom: 42px; z-index: 1; transform: scale(.88); filter: brightness(.35); }
-.pila-avisos .telegram { background: #1f2a33; }
 .selector { display: flex; gap: 4px; padding: 4px; border-radius: var(--pildora); background: var(--superficie-2); margin-top: auto; }
 .selector span { flex: 1; text-align: center; min-height: 40px; display: grid; place-items: center; border-radius: var(--pildora); font-size: var(--t-14); font-weight: 600; color: var(--tinta-2); transition: background .4s var(--sale), color .4s; }
 .selector span.elegido { background: var(--negro); color: var(--sobre-negro); }
