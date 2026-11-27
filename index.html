@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fuentes/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fuentes/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="estilos.css?v=10">
+<link rel="stylesheet" href="estilos.css?v=12">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -55,6 +55,7 @@
 
   <!-- ══ HÉROE ══ -->
   <section class="heroe" aria-labelledby="titular">
+    <div class="cinta" aria-hidden="true"><div class="cinta-pista" id="cinta" data-estado="vigilando"><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span><span>vigilando</span></div></div>
     <div class="envoltura">
       <div>
         <h1 class="titular" id="titular" data-escribe>Si alguien entra, te enteras <span class="esp">al instante.</span></h1>
@@ -67,13 +68,11 @@
 
       <!-- la app de verdad, contando su propia historia: vigila → alguien entra → aviso → la apagas → la vuelves a armar -->
       <div class="escena" id="escena" aria-label="Así se ve la app: vigilando, detecta movimiento, te avisa y la apagas desde el celular">
-        <div class="resplandor"></div>
-        <div class="radar" aria-hidden="true"><span></span><span></span><span></span><span class="onda"></span></div>
         <div class="telefono" id="telefono-heroe">
           <div class="pantalla">
-            <img class="activa" data-p="vigilando" src="capturas/vigilando-claro.webp?v=7" alt="La app en estado Vigilando, con el radar verde" width="393" height="793">
-            <img data-p="alarma" src="capturas/alarma-claro.webp?v=7" alt="La app en rojo: ¡Movimiento detectado! La sirena está sonando" width="393" height="793" loading="lazy">
-            <img data-p="desarmada" src="capturas/desarmada-claro.webp?v=7" alt="La app con la alarma desarmada" width="393" height="793" loading="lazy">
+            <img class="activa" data-p="vigilando" src="capturas/vigilando-claro.webp?v=8" alt="La app en estado Vigilando, con el radar verde" width="393" height="793">
+            <img data-p="alarma" src="capturas/alarma-claro.webp?v=8" alt="La app en rojo: ¡Movimiento detectado! La sirena está sonando" width="393" height="793" loading="lazy">
+            <img data-p="desarmada" src="capturas/desarmada-claro.webp?v=8" alt="La app con la alarma desarmada" width="393" height="793" loading="lazy">
             <div class="aviso" id="aviso-heroe" role="presentation">
               <span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span>
               <span class="aviso-cuerpo"><span class="aviso-arriba"><strong>⚠️ ¡Alerta de tu alarma!</strong><small>ahora</small></span><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span>
@@ -134,12 +133,12 @@
       <div class="recorrido">
         <div class="recorrido-fijo" aria-hidden="true">
           <div class="telefono"><div class="pantalla" id="pantalla-recorrido">
-            <img class="activa" data-p="desarmada" src="capturas/desarmada-claro.webp?v=7" alt="" width="393" height="793">
-            <img data-p="armando" src="capturas/armando-claro.webp?v=7" alt="" width="393" height="793" loading="lazy">
-            <img data-p="vigilando" src="capturas/vigilando-claro.webp?v=7" alt="" width="393" height="793" loading="lazy">
-            <img data-p="alarma" src="capturas/alarma-claro.webp?v=7" alt="" width="393" height="793" loading="lazy">
-            <img data-p="historial" src="capturas/historial-claro.webp?v=7" alt="" width="393" height="793" loading="lazy">
-            <img data-p="ajustes" src="capturas/ajustes-claro.webp?v=7" alt="" width="393" height="793" loading="lazy">
+            <img class="activa" data-p="desarmada" src="capturas/desarmada-claro.webp?v=8" alt="" width="393" height="793">
+            <img data-p="armando" src="capturas/armando-claro.webp?v=8" alt="" width="393" height="793" loading="lazy">
+            <img data-p="vigilando" src="capturas/vigilando-claro.webp?v=8" alt="" width="393" height="793" loading="lazy">
+            <img data-p="alarma" src="capturas/alarma-claro.webp?v=8" alt="" width="393" height="793" loading="lazy">
+            <img data-p="historial" src="capturas/historial-claro.webp?v=8" alt="" width="393" height="793" loading="lazy">
+            <img data-p="ajustes" src="capturas/ajustes-claro.webp?v=8" alt="" width="393" height="793" loading="lazy">
           </div></div>
         </div>
         <div>
@@ -147,37 +146,37 @@
             <p class="momento-paso"><b>01</b>Desarmada</p>
             <h3>Todo en una pantalla</h3>
             <p>Ves cómo está tu alarma y la armas con un solo botón. También puedes probar la sirena un segundo.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/desarmada-claro.webp?v=7" alt="Pantalla de inicio con la alarma desarmada y el botón Armar alarma" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/desarmada-claro.webp?v=8" alt="Pantalla de inicio con la alarma desarmada y el botón Armar alarma" width="393" height="793" loading="lazy"></div></div>
           </article>
           <article class="momento" data-p="armando">
             <p class="momento-paso"><b>02</b>Armándose</p>
             <h3>10 segundos para salir</h3>
             <p>Al armarla cuenta hacia atrás, para que salgas tranquilo sin que suene.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/armando-claro.webp?v=7" alt="Cuenta regresiva de la alarma armándose" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/armando-claro.webp?v=8" alt="Cuenta regresiva de la alarma armándose" width="393" height="793" loading="lazy"></div></div>
           </article>
           <article class="momento" data-p="vigilando">
             <p class="momento-paso"><b>03</b>Vigilando</p>
             <h3>El radar verde te dice que está cuidando</h3>
             <p>Desde cualquier lugar ves si está vigilando, la última detección y la señal WiFi de la alarma.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/vigilando-claro.webp?v=7" alt="La app vigilando, con el radar verde" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/vigilando-claro.webp?v=8" alt="La app vigilando, con el radar verde" width="393" height="793" loading="lazy"></div></div>
           </article>
           <article class="momento" data-p="alarma">
             <p class="momento-paso"><b>04</b>Alarma</p>
             <h3>Si alguien entra, no hay duda</h3>
             <p>La pantalla se pone roja, suena la sirena y te llega el aviso. La apagas desde aquí mismo.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/alarma-claro.webp?v=7" alt="Pantalla roja de movimiento detectado con el botón Apagar alarma" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/alarma-claro.webp?v=8" alt="Pantalla roja de movimiento detectado con el botón Apagar alarma" width="393" height="793" loading="lazy"></div></div>
           </article>
           <article class="momento" data-p="historial">
             <p class="momento-paso"><b>05</b>Historial</p>
             <h3>Sabes qué pasó y a qué hora</h3>
             <p>Los últimos 15 eventos, ordenados por día: cuándo se armó, cuándo se desarmó y cuándo vio a alguien.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/historial-claro.webp?v=7" alt="Historial de eventos por día" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/historial-claro.webp?v=8" alt="Historial de eventos por día" width="393" height="793" loading="lazy"></div></div>
           </article>
           <article class="momento" data-p="ajustes">
             <p class="momento-paso"><b>06</b>Ajustes</p>
             <h3>A la medida de tu casa</h3>
             <p>Elige qué tan sensible es el sensor, activa los avisos en tu celular o por Telegram y ponle nombre a tu alarma.</p>
-            <div class="telefono"><div class="pantalla"><img src="capturas/ajustes-claro.webp?v=7" alt="Ajustes: nombre, conexión, avisos y sensibilidad del sensor" width="393" height="793" loading="lazy"></div></div>
+            <div class="telefono"><div class="pantalla"><img src="capturas/ajustes-claro.webp?v=8" alt="Ajustes: nombre, conexión, avisos y sensibilidad del sensor" width="393" height="793" loading="lazy"></div></div>
           </article>
         </div>
       </div>
@@ -336,6 +335,6 @@
 </main>
 
 <script src="vendor/qrcode.min.js" defer></script>
-<script src="landing.js?v=10" defer></script>
+<script src="landing.js?v=12" defer></script>
 </body>
 </html>
