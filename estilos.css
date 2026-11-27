@@ -95,13 +95,13 @@ a { color: inherit; }
 .escena.alarma .radar .onda { border-color: rgba(242, 100, 91, .85); animation-duration: 1.1s; }
 .escena.alarma .resplandor { opacity: 1; }
 .resplandor { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(217, 42, 33, .45), transparent 65%); opacity: 0; transition: opacity .5s; filter: blur(10px); }
-/* marco: 11 px de borde + la pantalla de la app (390×844) + una franja de 44 para la hora y la isla */
-.telefono { position: relative; width: min(300px, 74vw); aspect-ratio: 412 / 910; border-radius: 50px; padding: 11px; background: #e9e9e9;
+/* proporción de un iPhone: 11 px de marco + pantalla de 393×852 (franja de 59 para la hora y la isla + la app de 393×793) */
+.telefono { position: relative; width: min(320px, 78vw); aspect-ratio: 415 / 874; border-radius: 50px; padding: 11px; background: #e9e9e9;
   box-shadow: 0 0 0 1.5px #3a3a3a, 0 40px 90px rgba(0, 0, 0, .6), inset 0 0 0 2px #000; transform-style: preserve-3d; transition: transform .8s var(--sale); }
 .telefono::after { content: ""; position: absolute; top: 22px; left: 50%; width: 88px; height: 26px; margin-left: -44px; border-radius: var(--pildora); background: #000; z-index: 3; }
 .pantalla { position: relative; height: 100%; border-radius: 40px; overflow: hidden; background: #dedede; }
 .pantalla::before { content: "9:54"; position: absolute; z-index: 2; top: 14px; left: 11%; font: 600 14px/20px var(--letra); color: #0a0a0a; letter-spacing: .01em; }
-.pantalla img { position: absolute; inset: auto 0 0 0; width: 100%; height: auto; aspect-ratio: 390 / 844; opacity: 0; transition: opacity .45s ease, transform .6s var(--sale); transform: scale(1.02); }
+.pantalla img { position: absolute; inset: auto 0 0 0; width: 100%; height: auto; aspect-ratio: 393 / 793; opacity: 0; transition: opacity .45s ease, transform .6s var(--sale); transform: scale(1.02); }
 .pantalla img.activa { opacity: 1; transform: scale(1); }
 .escena.tiembla .telefono { animation: tiembla .12s linear 10; }
 @keyframes tiembla { 25% { translate: -2px 0; } 75% { translate: 2px 0; } }

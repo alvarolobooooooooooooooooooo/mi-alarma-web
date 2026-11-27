@@ -207,7 +207,7 @@
     const aviso = $('#aviso-heroe');
     const dedo = $('#dedo');
     // Dónde están los botones en las capturas (fracción del ancho y del alto de la captura)
-    const BOTON = { apagar: [0.88, 0.685], armar: [0.88, 0.762] };
+    const BOTON = { apagar: [0.875, 0.73], armar: [0.88, 0.813] };
     let enPantalla = true;
     new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }).observe(escena);
 
