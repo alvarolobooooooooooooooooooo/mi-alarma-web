@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Alarma — Si alguien entra, te enteras al instante</title>
+<meta name="description" content="Alarma con sensor de movimiento y sirena que armas, desarmas y vigilas desde tu celular. Avisos al instante, toda la familia, hecha en Tegucigalpa.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Mi Alarma — Si alguien entra, te enteras al instante">
+<meta property="og:description" content="Sensor de movimiento, sirena y una app en tu celular. Pruébala gratis en modo demostración.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alvarolobooooooooooooooooooo.github.io/mi-alarma-web/">
+<meta property="og:image" content="https://alvarolobooooooooooooooooooo.github.io/mi-alarma-web/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_HN">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fuentes/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilos.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<!-- Íconos (un solo juego: Lucide, trazo 2, puntas redondas — el mismo de la app) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-abajo" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-mensaje" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-celular" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+  </defs>
+</svg>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="#inicio" aria-label="Mi Alarma, inicio">
+      <span class="marca-icono"><svg class="ic"><use href="#i-escudo"/></svg></span>Mi Alarma
+    </a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#la-app">La app</a>
+      <a href="#que-trae">Qué trae</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="boton boton--verde" href="#demo" data-demo>Probar gratis<span class="circulo"><svg class="ic"><use href="#i-flecha"/></svg></span></a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- ══ HÉROE ══ -->
+  <section class="heroe" aria-labelledby="titular">
+    <div class="envoltura">
+      <div>
+        <span class="etiqueta"><span class="punto"></span>Hecha en Tegucigalpa, Honduras</span>
+        <h1 class="titular" id="titular" data-escribe>Si alguien entra, te enteras <span class="esp">al instante.</span></h1>
+        <p class="bajada revela" style="--retraso:.9s">Una alarma con sensor de movimiento y sirena que armas, desarmas y vigilas desde tu celular, estés donde estés.</p>
+        <div class="acciones revela" style="--retraso:1.05s">
+          <a class="boton boton--verde" href="#pedir" data-pedir>Quiero mi alarma<span class="circulo"><svg class="ic"><use href="#i-flecha"/></svg></span></a>
+          <a class="enlace" href="#demo">Pruébala sin comprar nada<svg class="ic"><use href="#i-flecha"/></svg></a>
+        </div>
+        <ul class="confianza revela" style="--retraso:1.2s">
+          <li><svg class="ic"><use href="#i-check"/></svg>Avisos al celular al instante</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>iPhone y Android</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Toda la familia</li>
+        </ul>
+      </div>
+
+      <!-- la app de verdad, contando su propia historia: vigila → alguien entra → aviso → la apagas → la vuelves a armar -->
+      <div class="escena" id="escena" aria-label="Así se ve la app: vigilando, detecta movimiento, te avisa y la apagas desde el celular">
+        <div class="resplandor"></div>
+        <div class="radar" aria-hidden="true"><span></span><span></span><span></span><span class="onda"></span></div>
+        <div class="telefono" id="telefono-heroe">
+          <div class="pantalla">
+            <img class="activa" data-p="vigilando" src="capturas/vigilando-oscuro.webp" alt="La app en estado Vigilando, con el radar verde" width="390" height="844">
+            <img data-p="alarma" src="capturas/alarma-oscuro.webp" alt="La app en rojo: ¡Movimiento detectado! La sirena está sonando" width="390" height="844" loading="lazy">
+            <img data-p="desarmada" src="capturas/desarmada-oscuro.webp" alt="La app con la alarma desarmada" width="390" height="844" loading="lazy">
+            <img data-p="armando" src="capturas/armando-oscuro.webp" alt="La app armándose: cuenta regresiva para salir" width="390" height="844" loading="lazy">
+          </div>
+        </div>
+        <div class="aviso" id="aviso-heroe" role="presentation">
+          <span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span>
+          <span><small><span>Mi Alarma</span><span>ahora</span></small><strong>⚠️ ¡Alerta de tu alarma!</strong><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span>
+        </div>
+        <div class="dedo" id="dedo" aria-hidden="true"></div>
+        <span class="rotulo-escena" aria-live="off"><span class="punto"></span><span id="rotulo-escena">Vigilando la casa</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DATOS (todos salen del programa de la alarma) ══ -->
+  <section class="datos" aria-label="La alarma en números">
+    <div class="envoltura">
+      <ul>
+        <li class="revela"><span class="cifra"><span data-cuenta="10">10</span><small>s</small></span><p>para salir de la casa antes de que empiece a vigilar</p></li>
+        <li class="revela" style="--retraso:.08s"><span class="cifra" data-cuenta="6">6</span><p>celulares pueden recibir los avisos</p></li>
+        <li class="revela" style="--retraso:.16s"><span class="cifra" data-cuenta="3">3</span><p>niveles de sensibilidad contra falsas alarmas</p></li>
+        <li class="revela" style="--retraso:.24s"><span class="cifra" data-cuenta="15">15</span><p>últimos eventos guardados en el historial</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ CÓMO FUNCIONA ══ -->
+  <section class="seccion" id="como-funciona" aria-labelledby="t-como">
+    <div class="envoltura">
+      <p class="antetitulo">Cómo funciona</p>
+      <h2 class="titulo-seccion" id="t-como" data-escribe>Tres pasos y tu casa <span class="esp">ya está cuidada.</span></h2>
+      <ol class="pasos">
+        <li class="paso revela">
+          <span class="paso-num" aria-hidden="true">1</span>
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg></span>
+          <h3>La conectas a tu WiFi</h3>
+          <p>La primera vez crea su propia red «MiAlarma». Te conectas desde el celular y eliges tu WiFi. Sin cables ni programas.</p>
+        </li>
+        <li class="paso revela" style="--retraso:.1s">
+          <span class="paso-num" aria-hidden="true">2</span>
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>La armas con un toque</h3>
+          <p>Desde la app. Tienes 10 segundos para salir antes de que empiece a vigilar.</p>
+        </li>
+        <li class="paso revela" style="--retraso:.2s">
+          <span class="paso-num" aria-hidden="true">3</span>
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/><path d="M21 12h1"/><path d="M18.5 4.5 18 5"/><path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.929 4.929.707.707"/><path d="M12 12v6"/></svg></span>
+          <h3>Si alguien entra, te avisa</h3>
+          <p>Suena la sirena y te llega el aviso al celular, aunque estés lejos de la casa.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══ LA APP (el teléfono se queda; la pantalla cambia al bajar) ══ -->
+  <section class="seccion" id="la-app" aria-labelledby="t-app" style="padding-top:0">
+    <div class="envoltura">
+      <p class="antetitulo">La app</p>
+      <h2 class="titulo-seccion" id="t-app" data-escribe>Toda tu alarma, <span class="esp">en tu bolsillo.</span></h2>
+      <p class="texto-seccion">Así se ve la app de verdad. Se instala desde el navegador y queda en tu pantalla de inicio como cualquier app.</p>
+      <div class="recorrido">
+        <div class="recorrido-fijo" aria-hidden="true">
+          <div class="telefono"><div class="pantalla" id="pantalla-recorrido">
+            <img class="activa" data-p="desarmada" src="capturas/desarmada-claro.webp" alt="" width="390" height="844">
+            <img data-p="armando" src="capturas/armando-claro.webp" alt="" width="390" height="844" loading="lazy">
+            <img data-p="vigilando" src="capturas/vigilando-claro.webp" alt="" width="390" height="844" loading="lazy">
+            <img data-p="alarma" src="capturas/alarma-claro.webp" alt="" width="390" height="844" loading="lazy">
+            <img data-p="historial" src="capturas/historial-claro.webp" alt="" width="390" height="844" loading="lazy">
+            <img data-p="ajustes" src="capturas/ajustes-claro.webp" alt="" width="390" height="844" loading="lazy">
+          </div></div>
+        </div>
+        <div>
+          <article class="momento" data-p="desarmada">
+            <span class="momento-chip"><span class="punto gris"></span>Desarmada</span>
+            <h3>Todo en una pantalla</h3>
+            <p>Ves cómo está tu alarma y la armas con un solo botón. También puedes probar la sirena un segundo.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/desarmada-claro.webp" alt="Pantalla de inicio con la alarma desarmada y el botón Armar alarma" width="390" height="844" loading="lazy"></div></div>
+          </article>
+          <article class="momento" data-p="armando">
+            <span class="momento-chip"><span class="punto"></span>Armándose</span>
+            <h3>10 segundos para salir</h3>
+            <p>Al armarla cuenta hacia atrás, para que salgas tranquilo sin que suene.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/armando-claro.webp" alt="Cuenta regresiva de la alarma armándose" width="390" height="844" loading="lazy"></div></div>
+          </article>
+          <article class="momento" data-p="vigilando">
+            <span class="momento-chip"><span class="punto"></span>Vigilando</span>
+            <h3>El radar verde te dice que está cuidando</h3>
+            <p>Desde cualquier lugar ves si está vigilando, la última detección y la señal WiFi de la alarma.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/vigilando-claro.webp" alt="La app vigilando, con el radar verde" width="390" height="844" loading="lazy"></div></div>
+          </article>
+          <article class="momento" data-p="alarma">
+            <span class="momento-chip"><span class="punto rojo"></span>¡Movimiento!</span>
+            <h3>Si alguien entra, no hay duda</h3>
+            <p>La pantalla se pone roja, suena la sirena y te llega el aviso. La apagas desde aquí mismo.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/alarma-claro.webp" alt="Pantalla roja de movimiento detectado con el botón Apagar alarma" width="390" height="844" loading="lazy"></div></div>
+          </article>
+          <article class="momento" data-p="historial">
+            <span class="momento-chip"><span class="punto gris"></span>Historial</span>
+            <h3>Sabes qué pasó y a qué hora</h3>
+            <p>Los últimos 15 eventos, ordenados por día: cuándo se armó, cuándo se desarmó y cuándo vio a alguien.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/historial-claro.webp" alt="Historial de eventos por día" width="390" height="844" loading="lazy"></div></div>
+          </article>
+          <article class="momento" data-p="ajustes">
+            <span class="momento-chip"><span class="punto gris"></span>Ajustes</span>
+            <h3>A la medida de tu casa</h3>
+            <p>Elige qué tan sensible es el sensor, activa los avisos en tu celular o por Telegram y ponle nombre a tu alarma.</p>
+            <div class="telefono"><div class="pantalla"><img src="capturas/ajustes-claro.webp" alt="Ajustes: nombre, conexión, avisos y sensibilidad del sensor" width="390" height="844" loading="lazy"></div></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ POR QUÉ ESTA (lo que hace el programa de la alarma, no promesas) ══ -->
+  <section class="seccion" aria-labelledby="t-porque" style="padding-top:0">
+    <div class="envoltura">
+      <p class="antetitulo">Pensada para no fallarte</p>
+      <h2 class="titulo-seccion" id="t-porque" data-escribe>Hace lo que una alarma <span class="esp">tiene que hacer.</span></h2>
+      <div class="rejilla">
+        <article class="tarjeta tarjeta--grande revela">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M22 8c0-2.3-.8-4.3-2-6"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/></svg></span>
+          <h3>El aviso te llega aunque la app esté cerrada</h3>
+          <p>La propia alarma manda la notificación a tu celular. Y si quieres, también por Telegram.</p>
+          <div class="pila-avisos" aria-hidden="true">
+            <div class="aviso"><span class="aviso-icono"><svg class="ic"><use href="#i-escudo"/></svg></span><span><small><span>Mi Alarma</span><span>ahora</span></small><strong>⚠️ ¡Alerta de tu alarma!</strong><p>Detectó movimiento. Toca para ver qué pasó y apagarla.</p></span></div>
+            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span><small><span>Telegram</span><span>21:54</span></small><strong>Mi Alarma</strong><p>⚠️ ¡Movimiento detectado! (21:54) La alarma está sonando. Abre la app para apagarla.</p></span></div>
+            <div class="aviso telegram"><span class="aviso-icono" style="background:#229ED9;color:#fff"><svg class="ic" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><span><small><span>Telegram</span><span>ayer</span></small><strong>Mi Alarma</strong><p>🔌 La alarma se encendió (¿se fue la luz?) y se está volviendo a armar.</p></span></div>
+          </div>
+        </article>
+        <article class="tarjeta revela" style="--retraso:.06s">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg></span>
+          <h3>Menos falsas alarmas</h3>
+          <p>En «Normal» necesita ver movimiento dos veces seguidas antes de sonar.</p>
+          <div class="selector" aria-hidden="true" id="selector"><span>Baja</span><span class="elegido">Normal</span><span>Alta</span></div>
+        </article>
+        <article class="tarjeta revela" style="--retraso:.12s">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M6.3 20.3a2.4 2.4 0 0 0 3.4 0L12 18l-6-6-2.3 2.3a2.4 2.4 0 0 0 0 3.4Z"/><path d="m2 22 3-3"/><path d="M7.5 13.5 10 11"/><path d="M10.5 16.5 13 14"/><path d="m18 3-4 4h6l-4 4"/></svg></span>
+          <h3>Si se va la luz, se vuelve a armar sola</h3>
+          <p>Cuando regresa la luz, si estaba armada, sigue vigilando sin que tengas que hacer nada.</p>
+        </article>
+        <article class="tarjeta revela" style="--retraso:.18s">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3>Para toda la familia</h3>
+          <p>Todos usan el mismo código. Hasta 6 celulares reciben los avisos.</p>
+        </article>
+        <article class="tarjeta revela" style="--retraso:.24s">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <h3>Conexión cifrada y privada</h3>
+          <p>Cada alarma tiene su propia contraseña y solo ve sus mensajes. Ninguna ve lo de otra.</p>
+        </article>
+        <article class="tarjeta tarjeta--ancha revela" style="--retraso:.3s">
+          <span class="dibujo" data-dibuja><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span>
+          <h3>Se mejora sola y se muda contigo</h3>
+          <p>Las mejoras llegan por WiFi: las instalas desde la app. ¿Cambiaste de WiFi? Eliges el nuevo desde el celular, sin abrir nada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ QUÉ TRAE ══ -->
+  <section class="seccion kit" id="que-trae" aria-labelledby="t-kit">
+    <div class="envoltura">
+      <p class="antetitulo">Qué trae</p>
+      <h2 class="titulo-seccion" id="t-kit" data-escribe>Tres piezas que trabajan <span class="esp">juntas.</span></h2>
+      <p class="texto-seccion">El sensor ve, la placa decide y avisa, la sirena suena. Y tú lo controlas todo desde el celular.</p>
+      <div class="kit-plano revela">
+        <svg viewBox="0 0 1100 470" role="img" aria-label="El sensor de movimiento se conecta a la placa ESP32, que se conecta a la sirena y avisa al celular por WiFi" data-dibuja-kit>
+          <!-- cables y el pulso que corre por ellos -->
+          <path class="cable" d="M 298 262 C 360 262 380 262 440 262"/>
+          <path class="cable" d="M 660 262 C 720 262 750 262 806 262"/>
+          <path class="pulso" id="pulso1" d="M 298 262 C 360 262 380 262 440 262"/>
+          <path class="pulso" id="pulso2" d="M 660 262 C 720 262 750 262 806 262"/>
+          <!-- sensor de movimiento (PIR) -->
+          <g class="pieza">
+            <rect x="112" y="210" width="186" height="150" rx="16"/>
+            <path d="M 135 214 A 70 70 0 0 1 275 214"/>
+            <path d="M 160 213 A 45 60 0 0 1 250 213 M 182 212 A 23 66 0 0 1 228 212 M 205 145 L 205 212"/>
+            <path class="pieza-fina" d="M 140 185 L 270 185 M 152 163 L 258 163"/>
+            <path d="M 175 360 L 175 388 M 205 360 L 205 388 M 235 360 L 235 388"/>
+            <circle cx="135" cy="337" r="6"/><circle cx="275" cy="337" r="6"/>
+          </g>
+          <!-- la placa ESP32 -->
+          <g class="pieza">
+            <rect x="440" y="150" width="220" height="226" rx="18"/>
+            <rect x="482" y="172" width="136" height="104" rx="8"/>
+            <path d="M 496 190 h 18 v 14 h 18 v -14 h 18 v 14 h 18 v -14 h 18 v 14 h 12"/>
+            <path class="pieza-fina" d="M 496 222 H 604 M 496 238 H 580"/>
+            <rect x="524" y="352" width="52" height="30" rx="6"/>
+            <rect x="470" y="312" width="26" height="20" rx="4"/><rect x="604" y="312" width="26" height="20" rx="4"/>
+            <circle cx="550" cy="318" r="6"/>
+            <path class="pieza-fina" d="M 452 172 v 186 M 648 172 v 186"/>
+            <path d="M 446 182 h 10 M 446 204 h 10 M 446 226 h 10 M 446 248 h 10 M 446 270 h 10 M 446 292 h 10 M 446 314 h 10 M 446 336 h 10 M 644 182 h 10 M 644 204 h 10 M 644 226 h 10 M 644 248 h 10 M 644 270 h 10 M 644 292 h 10 M 644 314 h 10 M 644 336 h 10"/>
+          </g>
+          <!-- WiFi hacia el celular -->
+          <g class="pieza">
+            <path d="M 550 120 h .01 M 520 96 a 42 42 0 0 1 60 0 M 498 74 a 72 72 0 0 1 104 0 M 476 52 a 104 104 0 0 1 148 0"/>
+          </g>
+          <!-- la sirena -->
+          <g class="pieza">
+            <ellipse cx="900" cy="200" rx="86" ry="26"/>
+            <path d="M 814 200 V 318 A 86 26 0 0 0 986 318 V 200"/>
+            <circle cx="900" cy="200" r="10"/><circle cx="868" cy="200" r="4"/><circle cx="932" cy="200" r="4"/><circle cx="900" cy="186" r="3"/><circle cx="900" cy="214" r="3"/>
+            <path d="M 1010 236 a 36 36 0 0 1 0 52 M 1030 216 a 64 64 0 0 1 0 92 M 1050 198 a 92 92 0 0 1 0 128"/>
+            <path class="pieza-fina" d="M 806 262 h 8"/>
+          </g>
+          <text x="205" y="428" text-anchor="middle" class="t-nombre">Sensor de movimiento</text>
+          <text x="205" y="454" text-anchor="middle" class="t-hace">ve si alguien pasa</text>
+          <text x="550" y="428" text-anchor="middle" class="t-nombre">Placa ESP32 con WiFi</text>
+          <text x="550" y="454" text-anchor="middle" class="t-hace">decide y te avisa</text>
+          <text x="900" y="428" text-anchor="middle" class="t-nombre">Sirena</text>
+          <text x="900" y="454" text-anchor="middle" class="t-hace">suena para espantar</text>
+        </svg>
+      </div>
+      <ul class="kit-lista">
+        <li class="revela"><svg class="ic"><use href="#i-check"/></svg><span><strong>Sensor de movimiento</strong><span>Detecta personas que pasan frente a él.</span></span></li>
+        <li class="revela" style="--retraso:.06s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Placa con WiFi</strong><span>El cerebro: vigila, hace sonar y avisa.</span></span></li>
+        <li class="revela" style="--retraso:.12s"><svg class="ic"><use href="#i-check"/></svg><span><strong>Sirena</strong><span>Suena 10 segundos cuando detecta a alguien.</span></span></li>
+        <li class="revela" style="--retraso:.18s"><svg class="ic"><use href="#i-celular"/></svg><span><strong>La app Mi Alarma</strong><span>Para iPhone y Android, sin pagar por descargarla.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ PRUÉBALA ══ -->
+  <div class="envoltura">
+    <section class="prueba revela" id="demo" aria-labelledby="t-demo">
+      <div>
+        <p class="antetitulo" style="color:var(--sobre-negro-2)">Sin compromiso</p>
+        <h2 class="titulo-seccion" id="t-demo" data-escribe>Pruébala ahora, <span class="esp">sin comprar nada.</span></h2>
+        <p class="texto-seccion" style="margin-bottom:var(--e-8)">Abre la app en modo demostración: ármala y toca «Simular persona» para ver lo que pasa cuando alguien entra.</p>
+        <a class="boton boton--verde" href="https://alvarolobooooooooooooooooooo.github.io/mi-alarma/" target="_blank" rel="noopener">Abrir la demostración<span class="circulo"><svg class="ic"><use href="#i-flecha"/></svg></span></a>
+      </div>
+      <div class="qr" id="qr"><div id="qr-codigo"></div>Escanéalo con tu celular</div>
+    </section>
+  </div>
+
+  <!-- ══ PREGUNTAS ══ -->
+  <section class="seccion" id="preguntas" aria-labelledby="t-preg" style="padding-top:0">
+    <div class="envoltura">
+      <p class="antetitulo">Preguntas</p>
+      <h2 class="titulo-seccion" id="t-preg" data-escribe>Lo que todos <span class="esp">preguntan.</span></h2>
+      <div class="preguntas">
+        <details class="revela"><summary>¿Necesito internet?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>La alarma usa el WiFi de tu casa. Tu celular puede estar en cualquier lugar donde tenga internet: datos o WiFi.</p></details>
+        <details class="revela"><summary>¿Qué pasa si se va la luz?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>Mientras no hay luz no puede vigilar. Cuando la luz regresa, si estaba armada, se arma sola otra vez.</p></details>
+        <details class="revela"><summary>¿Funciona en iPhone y en Android?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>Sí. La app se abre en el navegador y se agrega a la pantalla de inicio: en iPhone desde Safari (Compartir → «Agregar a pantalla de inicio») y en Android desde Chrome. En iPhone, para recibir los avisos hay que agregarla a la pantalla de inicio.</p></details>
+        <details class="revela"><summary>¿La puede usar toda la familia?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>Sí. Todos entran con el mismo código y la misma contraseña, y hasta 6 celulares reciben los avisos.</p></details>
+        <details class="revela"><summary>¿Dónde la pongo?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>En la pared, a 1,5–2 metros de alto, apuntando a la entrada, para que quien entre pase de lado frente al sensor. Que no apunte a espejos, vidrios, ventanas ni a la tele: para el sensor reflejan el calor como un espejo y la pueden hacer sonar sin que haya nadie.</p></details>
+        <details class="revela"><summary>¿Y si mi perro o mi gato se mueve?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>El sensor detecta el movimiento de personas y también de animales. Puedes bajar la sensibilidad, pero lo mejor es ponerlo donde tu mascota no pase cuando la alarma esté armada.</p></details>
+        <details class="revela"><summary>¿Es segura la conexión?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>Sí. La alarma y la app se hablan por una conexión cifrada, a través de un servidor privado. Cada alarma tiene su propia contraseña y nunca ve los mensajes de otra.</p></details>
+        <details class="revela"><summary>¿Y si me cambio de casa o de WiFi?<svg class="ic"><use href="#i-abajo"/></svg></summary><p>Si no encuentra su WiFi, crea su propia red «MiAlarma». Te conectas desde el celular, eliges la red nueva y listo. No hay que tocar nada por dentro.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CIERRE ══ -->
+  <section class="cierre" id="pedir" aria-labelledby="t-cierre">
+    <div class="envoltura">
+      <h2 class="titulo-seccion" id="t-cierre" data-escribe>Duerme tranquilo: <span class="esp">ella vigila.</span></h2>
+      <p class="texto-seccion" style="margin:0 auto;color:var(--sobre-negro-2)">Escríbenos y te contamos cómo tener la tuya.</p>
+      <div class="acciones">
+        <a class="boton boton--verde" href="#demo" data-pedir>Quiero mi alarma<span class="circulo"><svg class="ic"><use href="#i-mensaje"/></svg></span></a>
+        <a class="enlace" href="https://alvarolobooooooooooooooooooo.github.io/mi-alarma/" target="_blank" rel="noopener">Probar la demostración<svg class="ic"><use href="#i-flecha"/></svg></a>
+      </div>
+      <footer class="pie">
+        <span>Mi Alarma · Hecha en Tegucigalpa, Honduras</span>
+        <span>© 2026</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script src="vendor/qrcode.min.js" defer></script>
+<script src="landing.js" defer></script>
+</body>
+</html>
