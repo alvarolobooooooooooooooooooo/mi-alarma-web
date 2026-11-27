@@ -84,7 +84,11 @@ a { color: inherit; }
 .heroe .enlace { color: var(--sobre-negro); }
 
 /* el teléfono con la app de verdad */
-.escena { position: relative; display: grid; place-items: center; min-height: 600px; perspective: 1400px; }
+.escena { position: relative; display: grid; place-items: center; min-height: 600px; perspective: 1200px; }
+/* el teléfono del banner en 3D: arranca inclinado mirando al título; app.js lo endereza al bajar
+   y lo hace seguir un poco al mouse (sin transición: lo mueve cuadro a cuadro, con inercia) */
+#telefono-heroe { transform: rotateX(8deg) rotateY(-24deg) rotateZ(2deg); transition: none; will-change: transform;
+  background: linear-gradient(110deg, #f7f7f7 0%, #e4e4e4 38%, #d6d6d6 62%, #ececec 100%); }
 /* proporción de un iPhone: 11 px de marco + pantalla de 393×852 (franja de 59 para la hora y la isla + la app de 393×793) */
 .telefono { position: relative; width: min(320px, 78vw); aspect-ratio: 415 / 874; border-radius: 50px; padding: 11px; background: #e9e9e9;
   box-shadow: 0 0 0 1.5px #3a3a3a, 0 40px 90px rgba(0, 0, 0, .6), inset 0 0 0 2px #000; transform-style: preserve-3d; transition: transform .8s var(--sale); }

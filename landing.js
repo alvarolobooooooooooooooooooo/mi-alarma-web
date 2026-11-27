@@ -211,15 +211,49 @@
     let enPantalla = true;
     new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }).observe(escena);
 
+    // Teléfono en 3D: inclinado al cargar, se endereza al bajar; en computadora sigue al mouse
+    const tel = $('#telefono-heroe');
+    const ancho = matchMedia('(min-width: 980px)');
+    const conMouse = matchMedia('(hover: hover) and (pointer: fine)');
+    const limitar = (v, a = -1, b = 1) => Math.max(a, Math.min(b, v));
+    let mx = 0, my = 0;
+    let gx = 8, gy = -24, gz = 2;  // giro actual, en grados
+    const heroe = escena.closest('.heroe') || escena;
+    heroe.addEventListener('pointermove', (e) => {
+      if (!conMouse.matches) return;
+      const r = escena.getBoundingClientRect();
+      mx = limitar((e.clientX - (r.left + r.width / 2)) / (r.width / 2));
+      my = limitar((e.clientY - (r.top + r.height / 2)) / (r.height / 2));
+    });
+    heroe.addEventListener('pointerleave', () => { mx = 0; my = 0; });
+    const girar = () => {
+      if (enPantalla && !document.hidden) {
+        const r = escena.getBoundingClientRect();
+        const d = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;  // + = más abajo del centro
+        // computadora: derecho cuando ya bajaste un poco; celular: derecho al llegar al centro
+        const p = ancho.matches ? limitar(-d / 0.35, 0, 1) : limitar(1 - d / 0.5, 0, 1);
+        const ox = 8 * (1 - p) - my * 5;
+        const oy = -24 * (1 - p) + mx * 8;
+        const oz = 2 * (1 - p);
+        gx += (ox - gx) * 0.08;
+        gy += (oy - gy) * 0.08;
+        gz += (oz - gz) * 0.08;
+        tel.style.transform = `rotateX(${gx.toFixed(2)}deg) rotateY(${gy.toFixed(2)}deg) rotateZ(${gz.toFixed(2)}deg)`;
+      }
+      requestAnimationFrame(girar);
+    };
+    requestAnimationFrame(girar);
+
     const mostrar = (nombre) => pantallas.forEach((img) => img.classList.toggle('activa', img.dataset.p === nombre));
     const turno = async (ms) => {
       await espera(ms);
       while (!enPantalla || document.hidden) await espera(400);
     };
+    // Dónde tocar, en el plano de la pantalla (medidas sin el giro 3D): la captura va pegada abajo
     const punto = ([fx, fy]) => {
-      const p = $('.pantalla img', escena).getBoundingClientRect();
-      const e = escena.getBoundingClientRect();
-      return [p.left - e.left + fx * p.width, p.top - e.top + fy * p.height];
+      const img = $('.pantalla img', escena);
+      const arriba = img.parentElement.clientHeight - img.offsetHeight;
+      return [fx * img.offsetWidth, arriba + fy * img.offsetHeight];
     };
     const ponerDedo = ([x, y]) => {
       dedo.style.transition = 'none';
