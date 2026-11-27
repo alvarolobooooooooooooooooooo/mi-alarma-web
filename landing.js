@@ -206,14 +206,12 @@
     const pantallas = $$('.pantalla img', escena);
     const aviso = $('#aviso-heroe');
     const dedo = $('#dedo');
-    const rotulo = $('#rotulo-escena');
     // Dónde están los botones en las capturas (fracción del ancho y del alto de la captura)
     const BOTON = { apagar: [0.88, 0.685], armar: [0.88, 0.762] };
     let enPantalla = true;
     new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }).observe(escena);
 
     const mostrar = (nombre) => pantallas.forEach((img) => img.classList.toggle('activa', img.dataset.p === nombre));
-    const decir = (texto) => { rotulo.textContent = texto; };
     const turno = async (ms) => {
       await espera(ms);
       while (!enPantalla || document.hidden) await espera(400);
@@ -254,7 +252,6 @@
         // Alguien entra
         escena.classList.add('alarma', 'tiembla');
         mostrar('alarma');
-        decir('¡Alguien entró!');
         await espera(350);
         aviso.classList.add('visible');
         await espera(1000);
@@ -266,14 +263,12 @@
         escena.classList.add('desarmada');
         aviso.classList.remove('visible');
         mostrar('desarmada');
-        decir('La apagaste desde el celular');
         await soltar();
         await turno(2200);
         // La vuelves a armar
         await tocar(BOTON.armar);
         escena.classList.remove('desarmada');
         mostrar('vigilando');
-        decir('Vigilando la casa');
         await soltar();
       }
     })();
