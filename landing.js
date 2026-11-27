@@ -1,5 +1,5 @@
 /*
-  Mi Alarma · landing — el movimiento de la página.
+  BloK · landing — el movimiento de la página.
   Sin este archivo la página se ve completa (todo lo que aparece al bajar solo
   se esconde si hay JavaScript: ver «.js .revela» en estilos.css).
   Con «reducir movimiento» no se anima nada.
@@ -8,7 +8,7 @@
   // Número de WhatsApp para «Quiero mi alarma», con código de país y sin «+».
   // Vacío = los botones llevan a la demostración.
   const WHATSAPP = '';
-  const MENSAJE = 'Hola, quiero información de Mi Alarma.';
+  const MENSAJE = 'Hola, quiero información de BloK.';
   const DEMO = 'https://alvarolobooooooooooooooooooo.github.io/mi-alarma/';
 
   const $ = (s, r = document) => r.querySelector(s);
