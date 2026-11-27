@@ -200,8 +200,7 @@
   }
 
   /* ── El héroe: la app cuenta su propia historia ──
-     vigila → alguien entra (rojo, aviso) → la apagas → la vuelves a armar y vigila.
-     Detrás, la cinta dice en grande lo que está pasando. */
+     vigila → alguien entra (rojo, aviso) → la apagas → la vuelves a armar y vigila. */
   const escena = $('#escena');
   if (escena) {
     const pantallas = $$('.pantalla img', escena);
@@ -210,37 +209,6 @@
     // Dónde están los botones en las capturas (fracción del ancho y del alto de la captura)
     const BOTON = { apagar: [0.875, 0.73], armar: [0.88, 0.813] };
     let enPantalla = true;
-    // La cinta de atrás: la palabra del momento, a su propia velocidad (px por segundo)
-    const pista = $('#cinta');
-    const CINTA = {
-      vigilando: { texto: 'vigilando', velocidad: 60 },
-      alarma: { texto: '¡alguien entró!', velocidad: 230 },
-      desarmada: { texto: 'apagada', velocidad: 28 },
-    };
-    let corre = null;
-    const arrancar = (estado) => {
-      const { texto, velocidad } = CINTA[estado];
-      pista.dataset.estado = estado;
-      pista.replaceChildren(...Array.from({ length: 12 }, () => {
-        const s = document.createElement('span');
-        s.textContent = texto;
-        return s;
-      }));
-      if (corre) corre.cancel();
-      const mitad = pista.scrollWidth / 2;  // la segunda mitad repite la primera: el giro no se nota
-      corre = pista.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${-mitad}px)` }],
-        { duration: (mitad / velocidad) * 1000, iterations: Infinity });
-    };
-    // Cambio de palabra: la vieja se borra desenfocándose y la nueva aparece igual
-    const cinta = async (estado) => {
-      await pista.animate([{ opacity: 1, filter: 'blur(0)' }, { opacity: 0, filter: 'blur(14px)' }],
-        { duration: 260, easing: 'ease-in', fill: 'forwards' }).finished;
-      arrancar(estado);
-      const a = pista.animate([{ opacity: 0, filter: 'blur(14px)' }, { opacity: 1, filter: 'blur(0)' }],
-        { duration: 520, easing: SALE, fill: 'forwards' });
-      a.onfinish = () => { pista.getAnimations().filter((x) => x !== corre).forEach((x) => x.cancel()); };
-    };
-    document.fonts.ready.then(() => arrancar('vigilando'));
     new IntersectionObserver(([e]) => { enPantalla = e.isIntersecting; }).observe(escena);
 
     const mostrar = (nombre) => pantallas.forEach((img) => img.classList.toggle('activa', img.dataset.p === nombre));
@@ -284,7 +252,6 @@
         // Alguien entra
         escena.classList.add('alarma', 'tiembla');
         mostrar('alarma');
-        cinta('alarma');
         await espera(350);
         aviso.classList.add('visible');
         await espera(1000);
@@ -296,14 +263,12 @@
         escena.classList.add('desarmada');
         aviso.classList.remove('visible');
         mostrar('desarmada');
-        cinta('desarmada');
         await soltar();
         await turno(2200);
         // La vuelves a armar
         await tocar(BOTON.armar);
         escena.classList.remove('desarmada');
         mostrar('vigilando');
-        cinta('vigilando');
         await soltar();
       }
     })();

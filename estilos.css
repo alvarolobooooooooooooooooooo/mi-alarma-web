@@ -69,9 +69,9 @@ a { color: inherit; }
 @media (min-width: 900px) { .menu { display: flex; } }
 
 /* ── Héroe (negro, como la tarjeta protagonista de la app) ── */
-.heroe { position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 70% 45%, #1b1b1b 0%, #070707 60%, #000 100%); color: var(--sobre-negro); padding: 132px 0 150px; }
+.heroe { position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 60% at 70% 45%, #1b1b1b 0%, #070707 60%, #000 100%); color: var(--sobre-negro); padding: 132px 0 var(--e-16); }
 .heroe .envoltura { display: grid; gap: var(--e-12); align-items: center; }
-@media (min-width: 980px) { .heroe { padding: 150px 0 160px; } .heroe .envoltura { grid-template-columns: 1.08fr .92fr; } }
+@media (min-width: 980px) { .heroe { padding: 150px 0 var(--e-24); } .heroe .envoltura { grid-template-columns: 1.08fr .92fr; } }
 .etiqueta { display: inline-flex; align-items: center; gap: var(--e-2); min-height: 36px; padding: 0 16px; border-radius: var(--pildora); font-size: var(--t-14); font-weight: 500;
   background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); color: var(--sobre-negro); }
 .punto { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgba(46, 217, 1, .2); animation: latido 2s ease-in-out infinite; }
@@ -85,18 +85,6 @@ a { color: inherit; }
 
 /* el teléfono con la app de verdad */
 .escena { position: relative; display: grid; place-items: center; min-height: 600px; perspective: 1400px; }
-/* la cinta: cruza el banner por abajo, inclinada y detrás del teléfono, con la palabra del momento
-   en la letra de los títulos. Todo el contenido del banner va por encima (z-index 1). */
-.heroe .envoltura { position: relative; z-index: 1; }
-.cinta { position: absolute; z-index: 0; left: -4%; right: -4%; bottom: 4%; rotate: -4deg; overflow: hidden; pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.cinta-pista { display: flex; width: max-content; padding: .06em 0 .12em; will-change: transform; white-space: nowrap;
-  font-family: var(--especial); font-style: italic; font-weight: 400; font-size: clamp(96px, 12vw, 180px); line-height: 1.05; letter-spacing: -.01em;
-  color: var(--verde); text-shadow: 0 0 2px rgba(150, 255, 120, .9), 0 0 18px rgba(46, 217, 1, .55), 0 0 50px rgba(46, 217, 1, .35);
-  transition: color .5s, text-shadow .5s; }
-.cinta-pista span { padding-right: .4em; }
-.cinta-pista[data-estado="alarma"] { color: var(--rojo-brillo); text-shadow: 0 0 2px rgba(255, 180, 170, .9), 0 0 18px rgba(242, 100, 91, .6), 0 0 50px rgba(217, 42, 33, .45); }
-.cinta-pista[data-estado="desarmada"] { color: rgba(255, 255, 255, .16); text-shadow: none; }
 /* proporción de un iPhone: 11 px de marco + pantalla de 393×852 (franja de 59 para la hora y la isla + la app de 393×793) */
 .telefono { position: relative; width: min(320px, 78vw); aspect-ratio: 415 / 874; border-radius: 50px; padding: 11px; background: #e9e9e9;
   box-shadow: 0 0 0 1.5px #3a3a3a, 0 40px 90px rgba(0, 0, 0, .6), inset 0 0 0 2px #000; transform-style: preserve-3d; transition: transform .8s var(--sale); }
